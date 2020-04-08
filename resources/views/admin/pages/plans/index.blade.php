@@ -9,7 +9,12 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            #Filtros
+            <form action="{{ route('plans.search') }}" class="POST" class="form-inline">
+                @csrf
+                <input type="text" name="filter" placeholder="Nome" class="form-control" value="{{ $filters['filter'] ?? '' }}">
+                <br>
+                <button type="submit" class="btn btn-dark mb-2">Filtrar</button>
+            </form>
         </div>
         <div class="card-body">
             <table class="table table-condensed">
@@ -34,7 +39,11 @@
             </table>
         </div>
         <div class="card-footer">
+            @if(isset($filters))
+            {!! $plans->appends($filters)->links() !!}
+            @else
             {!! $plans->links() !!}
+            @endif
         </div>
     </div>
 @stop
