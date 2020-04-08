@@ -24,7 +24,13 @@
                     <strong>Descrição: </strong> {{$plan->description}}
                 </li>
             </ul>
+
+            <form action="{{ route('plans.detroy', $plan->url) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">DELETAR O PLANO {{ $plan->name }}</button>
+            </form>
+
         </div>
-        
     </div>
 @stop
