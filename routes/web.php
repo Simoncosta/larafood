@@ -7,6 +7,12 @@ Route::prefix('admin')
         ->group(function(){
 
     /**
+     * Routes Profiles
+     */
+    Route::any('profiles/search', 'ACL\ProfileController@search')->name('profiles.search');
+    Route::resource('profiles', 'ACL\ProfileController');
+
+    /**
     * Routes Details Plans 
     */
     Route::get('plans/{url}/details', 'DetailPlanController@index')->name('details.plan.index');
