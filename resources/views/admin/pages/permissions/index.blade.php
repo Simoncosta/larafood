@@ -35,9 +35,9 @@
                     <tr>
                         <td>{{ $permission->name }}</td>
                         <td width='10px;'>
-                            {{-- <a href="{{ route('details.permission.index', $permission->url) }}" class="btn btn-primary">Detalhes</a> --}}
                             <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-info">Editar</a>
                             <a href="{{ route('permissions.show', $permission->id) }}" class="btn btn-warning">Ver</a>
+                            <a href="{{ route('permissions.profiles', $permission->id) }}" class="btn btn-primary"><i class="fas fa-address-book"></i></a>
                         </td>
                     </tr>
                     @endforeach
