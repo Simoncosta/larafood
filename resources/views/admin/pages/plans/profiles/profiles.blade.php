@@ -31,7 +31,7 @@
                     <tr>
                         <td>{{ $profile->name }}</td>
                         <td width='10px;'>
-                            <a href="{{ route('profiles.profile.detach', [$profile->id, $profile->id]) }}" class="btn btn-danger">Desvincular</a>
+                            <a href="{{ route('plans.profiles.detach', [$plan->id, $profile->id]) }}" class="btn btn-danger">Desvincular</a>
                         </td>
                     </tr>
                     @endforeach

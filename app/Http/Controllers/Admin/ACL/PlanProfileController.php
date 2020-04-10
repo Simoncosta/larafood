@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\ACL;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Plan;
+use App\Models\Profile;
 
 class PlanProfileController extends Controller
 {
@@ -17,7 +19,7 @@ class PlanProfileController extends Controller
 
     public function profiles($idPlan)
     {
-        if (!$plan = $this->Plan->find($idPlan))
+        if (!$plan = $this->plan->find($idPlan))
             return redirect()->back();
 
         $profiles = $plan->Profiles()->paginate();
@@ -37,7 +39,7 @@ class PlanProfileController extends Controller
 
     public function profilesAvailable(Request $request, $idPlan)
     {
-        if (!$plan = $this->Plan->find($idPlan))
+        if (!$plan = $this->plan->find($idPlan))
             return redirect()->back();
 
         $filters = $request->except('_token');
@@ -49,17 +51,17 @@ class PlanProfileController extends Controller
     
     public function attachProfilesPlan(Request $request, $idPlan)
     {
-        if (!$plan = $this->Plan->find($idPlan))
+        if (!$plan = $this->plan->find($idPlan))
             return redirect()->back();
 
-        if (!$request->Profiles || count($request->Profiles) == 0)
+        if (!$request->profiles || count($request->profiles) == 0)
         {
             return redirect()
                     ->back()
                     ->with('info', 'Precisa escolher pelo menos uma plano');
         }
 
-        $plan->profiles()->attach($request->Profiles );
+        $plan->profiles()->attach($request->profiles );
 
         return redirect()->route('plans.profiles', $plan->id);
     }

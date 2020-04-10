@@ -11,8 +11,7 @@
         <li><a class="breadcrumb-item active" href="{{ route('plans.profiles.available', $plan->id) }}" class="active"> / Disponíveis</a></li>
     </ol>
 
-    <h1>Perfis Disponíveis Plano <strong>{{$profile->name}}</strong></h1> 
-    <a href="{{ route('profiles.permissions.available', $plan->id) }}" class="btn btn-dark">ADD NOVA PERMISSÃO</a>
+    <h1>Perfis Disponíveis Plano <strong>{{$plan->name}}</strong></h1>
 
     @stop
 
