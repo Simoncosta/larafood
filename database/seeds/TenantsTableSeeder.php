@@ -1,12 +1,12 @@
 <?php
 
 use App\Models\{
-    User,
+    Plan,
     Tenant
-};
+}; 
 use Illuminate\Database\Seeder;
 
-class UserTableSeeder extends Seeder
+class TenantsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,12 +15,13 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $tenant = Tenant::first();
+        $plan = Plan::first();
 
-        $tenant->users()->create([
-            'name' => 'Simon Furtado Costa',
+        $plan->tenants()->create([
+            'cnpj' => '238827060000120',
+            'name' => 'Simon Costa',
+            'url' => 'simoncosta',
             'email' => 'saimom_costa@hotmail.com',
-            'password' => bcrypt('123456'),
         ]);
     }
 }
